@@ -6,3 +6,6 @@
 
    3. Expliquer votre choix de médias sonores
       Il va évidemment avoir le bruit des chats ce qui risque d'être mes médias principaux. Sinon, des bruits de navette spaitale ou des petis bruits rigolos. 
+
+### Concept: 
+Un chat dans un environnement spatial comme une petite ville. Celui-ci fait des interactions par exemple un bruit ou un saut. Ensuite, nous pouvons intéragir avec la ville spatiale: une navette va bouger et faire du bruit, des étoiles vont tourner sur elles mêmes, etc.
