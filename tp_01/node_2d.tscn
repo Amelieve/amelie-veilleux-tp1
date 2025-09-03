@@ -1,40 +1,47 @@
-[gd_scene load_steps=7 format=3 uid="uid://dq3qu2h68e25b"]
+[gd_scene load_steps=6 format=3 uid="uid://dq3qu2h68e25b"]
 
-[ext_resource type="Texture2D" uid="uid://bysg50cncrkr1" path="res://media/platformIndustrial_061.png" id="1_kdubu"]
-[ext_resource type="Texture2D" uid="uid://cj2bihaafu2ag" path="res://media/platformIndustrial_060.png" id="2_d21ai"]
-[ext_resource type="Texture2D" uid="uid://dohpdj67g8186" path="res://media/platformIndustrial_059.png" id="3_rj586"]
-[ext_resource type="Texture2D" uid="uid://dytesy6s6pav8" path="res://media/platformIndustrial_047.png" id="4_4d7sh"]
-[ext_resource type="Texture2D" uid="uid://hrhu8nsfr74m" path="res://media/platformIndustrial_054.png" id="5_ir8iy"]
-[ext_resource type="Texture2D" uid="uid://bo8ep1ds8ukp7" path="res://media/platformIndustrial_055.png" id="6_hqns4"]
+[ext_resource type="Script" uid="uid://y1krvym0wq4i" path="res://player.gd" id="1_epypp"]
+[ext_resource type="Texture2D" uid="uid://dyt4jj4a1o0gd" path="res://media/idle.png" id="2_0hol4"]
+[ext_resource type="Texture2D" uid="uid://brppoqocsjkx5" path="res://media/attacj.png" id="3_0hol4"]
+[ext_resource type="Texture2D" uid="uid://capf4v78qgi16" path="res://media/jump.png" id="3_q6r6c"]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_epypp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0hol4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0hol4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0hol4")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0hol4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_q6r6c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0hol4")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 5.0
+}]
 
-[node name="PlatformIndustrial061" type="Sprite2D" parent="."]
-position = Vector2(3537, 2157)
-scale = Vector2(5.14642, 5.14642)
-texture = ExtResource("1_kdubu")
+[node name="player" type="Node2D"]
+script = ExtResource("1_epypp")
 
-[node name="PlatformIndustrial060" type="Sprite2D" parent="."]
-position = Vector2(3188, 2157)
-scale = Vector2(5.14285, 5.14285)
-texture = ExtResource("2_d21ai")
-
-[node name="PlatformIndustrial059" type="Sprite2D" parent="."]
-position = Vector2(2856.5, 2157.5)
-scale = Vector2(5.12857, 5.12857)
-texture = ExtResource("3_rj586")
-
-[node name="PlatformIndustrial047" type="Sprite2D" parent="."]
-position = Vector2(2468.5, 2135.5)
-scale = Vector2(5.61429, 5.61429)
-texture = ExtResource("4_4d7sh")
-
-[node name="PlatformIndustrial054" type="Sprite2D" parent="."]
-position = Vector2(2822, 1864)
-scale = Vector2(3.47143, 3.47143)
-texture = ExtResource("5_ir8iy")
-
-[node name="PlatformIndustrial055" type="Sprite2D" parent="."]
-position = Vector2(3856, 2100)
-scale = Vector2(6.68571, 6.68571)
-texture = ExtResource("6_hqns4")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(562, 337)
+scale = Vector2(0.159981, 0.159981)
+sprite_frames = SubResource("SpriteFrames_epypp")
+animation = &"attack"
+speed_scale = 0.75
