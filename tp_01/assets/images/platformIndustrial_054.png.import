@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wl7vxsq2r20w"
-path="res://.godot/imported/sit.png-e9610fe0a75a30985d830955cedcda32.ctex"
+uid="uid://hrhu8nsfr74m"
+path="res://.godot/imported/platformIndustrial_054.png-db11cde24fed22e5356792e592f2c91f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://media/sit.png"
-dest_files=["res://.godot/imported/sit.png-e9610fe0a75a30985d830955cedcda32.ctex"]
+source_file="res://assets/images/platformIndustrial_054.png"
+dest_files=["res://.godot/imported/platformIndustrial_054.png-db11cde24fed22e5356792e592f2c91f.ctex"]
 
 [params]
 

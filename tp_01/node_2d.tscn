@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://dq3qu2h68e25b"]
 
 [ext_resource type="Script" uid="uid://y1krvym0wq4i" path="res://player.gd" id="1_epypp"]
-[ext_resource type="Texture2D" uid="uid://dyt4jj4a1o0gd" path="res://media/idle.png" id="2_0hol4"]
-[ext_resource type="Texture2D" uid="uid://brppoqocsjkx5" path="res://media/attacj.png" id="3_0hol4"]
-[ext_resource type="Texture2D" uid="uid://capf4v78qgi16" path="res://media/jump.png" id="3_q6r6c"]
-[ext_resource type="Texture2D" uid="uid://wl7vxsq2r20w" path="res://media/sit.png" id="5_q6r6c"]
-[ext_resource type="AudioStream" uid="uid://ufrl5vbdcsaf" path="res://media/cat-meow-14536.mp3" id="6_kdubu"]
+[ext_resource type="Texture2D" uid="uid://dyt4jj4a1o0gd" path="res://assets/images/idle.png" id="2_0hol4"]
+[ext_resource type="Texture2D" uid="uid://brppoqocsjkx5" path="res://assets/images/attack.png" id="3_0hol4"]
+[ext_resource type="Texture2D" uid="uid://capf4v78qgi16" path="res://assets/images/jump.png" id="3_q6r6c"]
+[ext_resource type="Texture2D" uid="uid://wl7vxsq2r20w" path="res://assets/images/sit.png" id="5_q6r6c"]
+[ext_resource type="AudioStream" uid="uid://ufrl5vbdcsaf" path="res://assets/images/cat-meow-14536.mp3" id="6_kdubu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_epypp"]
 animations = [{

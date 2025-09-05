@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brppoqocsjkx5"
-path="res://.godot/imported/attacj.png-c43b272575d929868391d3de59f2f472.ctex"
+uid="uid://bysg50cncrkr1"
+path="res://.godot/imported/platformIndustrial_061.png-6187ca0c887dc5787d1365336771f20c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://media/attacj.png"
-dest_files=["res://.godot/imported/attacj.png-c43b272575d929868391d3de59f2f472.ctex"]
+source_file="res://assets/images/platformIndustrial_061.png"
+dest_files=["res://.godot/imported/platformIndustrial_061.png-6187ca0c887dc5787d1365336771f20c.ctex"]
 
 [params]
 
