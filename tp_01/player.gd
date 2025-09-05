@@ -1,29 +1,42 @@
 extends Node2D
 
-@onready var anim = $AnimatedSprite2D
+
+@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
+@onready var meow: AudioStreamPlayer2D = $meow  
 
 func _ready():
-	anim.play("idle") 
-
-func _input(event):
-	
-	if event is InputEventKey and event.pressed and not event.echo:
-		
-		if event.keycode == KEY_SPACE:
-			anim.play("jump")
-		
-	
-		elif event.physical_keycode == KEY_A:
-			anim.play("attack")
+	if anim and anim.sprite_frames:
+		anim.play("idle")
+	else:
+		push_error("AnimatedSprite2D introuvable ou SpriteFrames manquant.")
 
 func _process(delta):
 	
+	if Input.is_physical_key_pressed(KEY_Q):
+		if anim.animation != "sit":
+			if anim.sprite_frames.has_animation("sit"):
+				anim.play("sit")
+		return
+
+
 	if not anim.is_playing() and anim.animation in ["jump", "attack"]:
 		anim.play("idle")
+	elif anim.animation not in ["idle", "jump", "attack"]:
+		anim.play("idle")
 
+func _input(event):
+	if event is InputEventKey and event.pressed and not event.echo:
+		
+		if event.physical_keycode == KEY_SPACE:
+			anim.play("jump")
 
-func _on_animated_sprite_2d_frame_changed():
-	if anim.animation == "jump" and anim.frame == 1:
-		anim.scale = Vector2(1.5, 1.5) 
-	else:
-		anim.scale = Vector2(1, 1)      
+		
+		elif event.physical_keycode == KEY_A:
+			anim.play("attack")
+
+		
+		elif event.physical_keycode == KEY_E:
+			if meow.stream:
+				meow.play()
+			else:
+				push_error("Pas de son assigné au nœud 'meow'.")

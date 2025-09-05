@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dq3qu2h68e25b"]
+[gd_scene load_steps=8 format=3 uid="uid://dq3qu2h68e25b"]
 
 [ext_resource type="Script" uid="uid://y1krvym0wq4i" path="res://player.gd" id="1_epypp"]
 [ext_resource type="Texture2D" uid="uid://dyt4jj4a1o0gd" path="res://media/idle.png" id="2_0hol4"]
 [ext_resource type="Texture2D" uid="uid://brppoqocsjkx5" path="res://media/attacj.png" id="3_0hol4"]
 [ext_resource type="Texture2D" uid="uid://capf4v78qgi16" path="res://media/jump.png" id="3_q6r6c"]
+[ext_resource type="Texture2D" uid="uid://wl7vxsq2r20w" path="res://media/sit.png" id="5_q6r6c"]
+[ext_resource type="AudioStream" uid="uid://ufrl5vbdcsaf" path="res://media/cat-meow-14536.mp3" id="6_kdubu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_epypp"]
 animations = [{
@@ -34,6 +36,20 @@ animations = [{
 "loop": false,
 "name": &"jump",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0hol4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_q6r6c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0hol4")
+}],
+"loop": false,
+"name": &"sit",
+"speed": 5.0
 }]
 
 [node name="player" type="Node2D"]
@@ -43,5 +59,12 @@ script = ExtResource("1_epypp")
 position = Vector2(562, 337)
 scale = Vector2(0.159981, 0.159981)
 sprite_frames = SubResource("SpriteFrames_epypp")
-animation = &"attack"
+animation = &"sit"
+frame = 1
+frame_progress = 1.0
 speed_scale = 0.75
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(562, 337)
+scale = Vector2(0.159981, 0.159981)
+stream = ExtResource("6_kdubu")
