@@ -1,11 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://dq3qu2h68e25b"]
+[gd_scene load_steps=17 format=3 uid="uid://dq3qu2h68e25b"]
 
 [ext_resource type="Script" uid="uid://y1krvym0wq4i" path="res://player.gd" id="1_epypp"]
 [ext_resource type="Texture2D" uid="uid://dyt4jj4a1o0gd" path="res://assets/images/idle.png" id="2_0hol4"]
+[ext_resource type="Texture2D" uid="uid://dkhahrt0xlcwm" path="res://assets/images/espace.jpg" id="2_ir8iy"]
 [ext_resource type="Texture2D" uid="uid://brppoqocsjkx5" path="res://assets/images/attack.png" id="3_0hol4"]
 [ext_resource type="Texture2D" uid="uid://capf4v78qgi16" path="res://assets/images/jump.png" id="3_q6r6c"]
 [ext_resource type="Texture2D" uid="uid://wl7vxsq2r20w" path="res://assets/images/sit.png" id="5_q6r6c"]
-[ext_resource type="AudioStream" uid="uid://ufrl5vbdcsaf" path="res://assets/images/cat-meow-14536.mp3" id="6_kdubu"]
+[ext_resource type="AudioStream" uid="uid://dtck362cl3gih" path="res://assets/audio/meow.mp3" id="6_kdubu"]
+[ext_resource type="Texture2D" uid="uid://dwgfmaeb4filu" path="res://assets/images/pierre_milieu.png" id="8_hqns4"]
+[ext_resource type="Texture2D" uid="uid://bysg50cncrkr1" path="res://assets/images/platformIndustrial_061.png" id="9_0h7mo"]
+[ext_resource type="Texture2D" uid="uid://cn06lb1hixidf" path="res://assets/images/pierre_gauche.png" id="9_x0ka3"]
+[ext_resource type="Texture2D" uid="uid://yqggl8tw68lh" path="res://assets/images/pierre_droite.png" id="10_0h7mo"]
+[ext_resource type="Texture2D" uid="uid://dohpdj67g8186" path="res://assets/images/platformIndustrial_059.png" id="10_nr8wp"]
+[ext_resource type="Texture2D" uid="uid://cj2bihaafu2ag" path="res://assets/images/platformIndustrial_060.png" id="11_d2bti"]
+[ext_resource type="Texture2D" uid="uid://bo8ep1ds8ukp7" path="res://assets/images/platformIndustrial_055.png" id="14_d2bti"]
+[ext_resource type="Texture2D" uid="uid://hrhu8nsfr74m" path="res://assets/images/platformIndustrial_054.png" id="15_ta5nu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_epypp"]
 animations = [{
@@ -55,16 +64,86 @@ animations = [{
 [node name="player" type="Node2D"]
 script = ExtResource("1_epypp")
 
+[node name="Espace" type="Sprite2D" parent="."]
+position = Vector2(590, 353)
+texture = ExtResource("2_ir8iy")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(562, 337)
+position = Vector2(578, 421)
 scale = Vector2(0.159981, 0.159981)
 sprite_frames = SubResource("SpriteFrames_epypp")
-animation = &"sit"
-frame = 1
-frame_progress = 1.0
+animation = &"jump"
 speed_scale = 0.75
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(562, 337)
-scale = Vector2(0.159981, 0.159981)
 stream = ExtResource("6_kdubu")
+
+[node name="PierreMilieu" type="Sprite2D" parent="."]
+position = Vector2(246, 626)
+scale = Vector2(2.35, 2.35)
+texture = ExtResource("8_hqns4")
+
+[node name="PlatformIndustrial061" type="Sprite2D" parent="."]
+position = Vector2(698.25, 556.25)
+scale = Vector2(1.93571, 1.93571)
+texture = ExtResource("9_0h7mo")
+
+[node name="PlatformIndustrial059" type="Sprite2D" parent="."]
+position = Vector2(422.5, 557.5)
+scale = Vector2(1.95714, 1.95714)
+texture = ExtResource("10_nr8wp")
+
+[node name="PlatformIndustrial060" type="Sprite2D" parent="."]
+position = Vector2(560, 559)
+scale = Vector2(2.01429, 2.01429)
+texture = ExtResource("11_d2bti")
+
+[node name="PierreGauche" type="Sprite2D" parent="."]
+position = Vector2(83.5, 627)
+scale = Vector2(2.35714, 2.35714)
+texture = ExtResource("9_x0ka3")
+
+[node name="PierreDroite" type="Sprite2D" parent="."]
+position = Vector2(1068, 627)
+scale = Vector2(2.35714, 2.35714)
+texture = ExtResource("10_0h7mo")
+
+[node name="PierreMilieu2" type="Sprite2D" parent="."]
+position = Vector2(410, 626)
+scale = Vector2(2.34286, 2.34286)
+texture = ExtResource("8_hqns4")
+
+[node name="PierreMilieu3" type="Sprite2D" parent="."]
+position = Vector2(574.875, 626)
+scale = Vector2(2.375, 2.35)
+texture = ExtResource("8_hqns4")
+
+[node name="PierreMilieu4" type="Sprite2D" parent="."]
+position = Vector2(904.25, 626.25)
+scale = Vector2(2.33571, 2.33571)
+texture = ExtResource("8_hqns4")
+
+[node name="PierreMilieu5" type="Sprite2D" parent="."]
+position = Vector2(1922.9, 2097.1)
+scale = Vector2(5.5225, 5.5225)
+texture = ExtResource("8_hqns4")
+
+[node name="PierreMilieu7" type="Sprite2D" parent="."]
+position = Vector2(824.1, 2099.45)
+scale = Vector2(5.5225, 5.5225)
+texture = ExtResource("8_hqns4")
+
+[node name="PierreMilieu6" type="Sprite2D" parent="."]
+position = Vector2(740, 626)
+scale = Vector2(2.35, 2.35)
+texture = ExtResource("8_hqns4")
+
+[node name="PlatformIndustrial055" type="Sprite2D" parent="."]
+position = Vector2(399, 435)
+scale = Vector2(1.54286, 1.54286)
+texture = ExtResource("14_d2bti")
+
+[node name="PlatformIndustrial054" type="Sprite2D" parent="."]
+position = Vector2(435.5, 462.5)
+scale = Vector2(0.814286, 0.814286)
+texture = ExtResource("15_ta5nu")

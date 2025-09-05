@@ -2,7 +2,11 @@ extends Node2D
 
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
-@onready var meow: AudioStreamPlayer2D = $meow  
+@onready var meow: AudioStreamPlayer2D = $meow
+
+
+
+
 
 func _ready():
 	if anim and anim.sprite_frames:
@@ -19,10 +23,10 @@ func _process(delta):
 		return
 
 
-	if not anim.is_playing() and anim.animation in ["jump", "attack"]:
-		anim.play("idle")
-	elif anim.animation not in ["idle", "jump", "attack"]:
-		anim.play("idle")
+	#if not anim.is_playing() and anim.animation in ["jump", "attack"]:
+		#anim.play("idle")
+	#elif anim.animation not in ["idle", "jump", "attack"]:
+		#anim.play("idle")
 
 func _input(event):
 	if event is InputEventKey and event.pressed and not event.echo:
@@ -34,9 +38,10 @@ func _input(event):
 		elif event.physical_keycode == KEY_A:
 			anim.play("attack")
 
-		
-		elif event.physical_keycode == KEY_E:
-			if meow.stream:
-				meow.play()
-			else:
-				push_error("Pas de son assigné au nœud 'meow'.")
+func _son(event):
+	if event is InputEventKey and event.pressed:
+		if event.physical_keycode == KEY_E:
+			meow.stream = load("res://assets/audio/meow.mp3")
+
+			meow.stop() 
+			meow.play()
