@@ -1,10 +1,16 @@
 extends CharacterBody2D
 
 @export var speed : float = 200
-@export var jump_velocity : float = 400   # Note : positif vers le haut pour Godot 4
+@export var jump_velocity : float = 400  
 
 var anim_sprite : AnimatedSprite2D
-var gravity : float = 1200   # Ajuste selon ta scène
+var gravity : float = 1200   
+var meow_sound : AudioStreamPlayer2D
+
+func _son() -> void:
+	anim_sprite = $AnimatedSprite2D
+	meow_sound = $meow    
+	anim_sprite.play("idle")
 
 func _ready() -> void:
 	anim_sprite = $AnimatedSprite2D
@@ -13,13 +19,13 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	var input_direction = Vector2.ZERO
 
-	# Déplacement horizontal
+
 	if Input.is_action_pressed("move_right"):
-		input_direction.x += 1
-		anim_sprite.flip_h = false
+		input_direction.x += 13
+		anim_sprite.flip_h = true
 	elif Input.is_action_pressed("move_left"):
 		input_direction.x -= 1
-		anim_sprite.flip_h = true
+		anim_sprite.flip_h = false
 
 	velocity.x = input_direction.x * speed
 
@@ -27,24 +33,23 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	else:
-		velocity.y = 0  # réinitialise la vitesse verticale quand au sol
+		velocity.y = 0  
 
-	# Saut
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = -jump_velocity  # négatif pour sauter vers le haut
+		velocity.y = -jump_velocity 
 		anim_sprite.play("jump")
 
-	# S'assoir
+
 	elif Input.is_action_pressed("sit") and is_on_floor():
 		anim_sprite.play("sit")
 
-	# Attaque
+
 	elif Input.is_action_just_pressed("attack"):
 		anim_sprite.play("attack")
 
-	# Idle si aucune action
+	
 	elif is_on_floor() and velocity.x == 0 and not anim_sprite.is_playing():
 		anim_sprite.play("idle")
 
-	# Appliquer le mouvement
 	move_and_slide()
+	
