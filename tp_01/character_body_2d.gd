@@ -7,10 +7,6 @@ var anim_sprite : AnimatedSprite2D
 var gravity : float = 1200   
 var meow_sound : AudioStreamPlayer2D
 
-func _son() -> void:
-	anim_sprite = $AnimatedSprite2D
-	meow_sound = $meow    
-	anim_sprite.play("idle")
 
 func _ready() -> void:
 	anim_sprite = $AnimatedSprite2D

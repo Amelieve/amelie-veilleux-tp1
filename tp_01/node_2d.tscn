@@ -1,14 +1,17 @@
-[gd_scene load_steps=24 format=3 uid="uid://dq3qu2h68e25b"]
+[gd_scene load_steps=33 format=3 uid="uid://dq3qu2h68e25b"]
 
 [ext_resource type="Texture2D" uid="uid://vd2g7h8tf154" path="res://assets/images/espace_02.jpg" id="1_ta5nu"]
 [ext_resource type="Texture2D" uid="uid://dyt4jj4a1o0gd" path="res://assets/images/idle.png" id="2_0hol4"]
+[ext_resource type="Script" uid="uid://844bm8g52w48" path="res://terre.gd" id="2_7vxoj"]
 [ext_resource type="Script" uid="uid://ob14llko8yig" path="res://character_body_2d.gd" id="2_ta5nu"]
 [ext_resource type="Texture2D" uid="uid://brppoqocsjkx5" path="res://assets/images/attack.png" id="3_0hol4"]
+[ext_resource type="AudioStream" uid="uid://c43dhphjhne75" path="res://assets/audio/terre.mp3" id="3_ei405"]
 [ext_resource type="Texture2D" uid="uid://capf4v78qgi16" path="res://assets/images/jump.png" id="3_q6r6c"]
 [ext_resource type="Texture2D" uid="uid://wl7vxsq2r20w" path="res://assets/images/sit.png" id="5_q6r6c"]
 [ext_resource type="AudioStream" uid="uid://dtck362cl3gih" path="res://assets/audio/meow.mp3" id="6_kdubu"]
 [ext_resource type="Texture2D" uid="uid://bysg50cncrkr1" path="res://assets/images/platformIndustrial_061.png" id="9_ir8iy"]
 [ext_resource type="Texture2D" uid="uid://yqggl8tw68lh" path="res://assets/images/pierre_droite.png" id="10_0h7mo"]
+[ext_resource type="Script" uid="uid://bnpbbnk8stctl" path="res://meow.gd" id="10_ei405"]
 [ext_resource type="Texture2D" uid="uid://dohpdj67g8186" path="res://assets/images/platformIndustrial_059.png" id="10_hqns4"]
 [ext_resource type="Texture2D" uid="uid://cj2bihaafu2ag" path="res://assets/images/platformIndustrial_060.png" id="11_d2bti"]
 [ext_resource type="Texture2D" uid="uid://dwgfmaeb4filu" path="res://assets/images/pierre_milieu.png" id="11_x0ka3"]
@@ -16,9 +19,15 @@
 [ext_resource type="Texture2D" uid="uid://bo8ep1ds8ukp7" path="res://assets/images/platformIndustrial_055.png" id="13_nr8wp"]
 [ext_resource type="Script" uid="uid://dfl8tteq1eeta" path="res://lumiere.gd" id="14_d2bti"]
 [ext_resource type="AudioStream" uid="uid://bgcnqwtb478ss" path="res://assets/audio/light.mp3" id="15_d2bti"]
+[ext_resource type="Texture2D" uid="uid://hrhu8nsfr74m" path="res://assets/images/platformIndustrial_054.png" id="17_rjqkl"]
+[ext_resource type="AudioStream" uid="uid://c70bj610755l3" path="res://assets/audio/light_02.mp3" id="18_fs4d3"]
+[ext_resource type="Script" uid="uid://bvlfnsb7tec8p" path="res://lumiere_02.gd" id="19_7vxoj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e8dv2"]
+radius = 150.16
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kdubu"]
-size = Vector2(221, 167)
+size = Vector2(190, 139.5)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d21ai"]
 animations = [{
@@ -65,8 +74,11 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8dv2"]
+size = Vector2(177.5, 133.5)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rj586"]
-size = Vector2(457.706, 72)
+size = Vector2(349.064, 72)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4d7sh"]
 size = Vector2(1154.5, 117)
@@ -80,6 +92,9 @@ size = Vector2(142, 668)
 [sub_resource type="CircleShape2D" id="CircleShape2D_ta5nu"]
 radius = 14.0357
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ei405"]
+radius = 20.6414
+
 [node name="world" type="Node2D"]
 
 [node name="background" type="Node2D" parent="."]
@@ -89,22 +104,43 @@ position = Vector2(572, 340)
 scale = Vector2(0.312999, 0.327701)
 texture = ExtResource("1_ta5nu")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Area2D" type="Area2D" parent="background"]
+position = Vector2(572, 340)
+scale = Vector2(0.312999, 0.327701)
+script = ExtResource("2_7vxoj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="background/Area2D"]
+position = Vector2(846.648, -598.106)
+shape = SubResource("CircleShape2D_e8dv2")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="background"]
+position = Vector2(837, 144)
+scale = Vector2(0.312999, 0.327701)
+stream = ExtResource("3_ei405")
+
+[node name="chat" type="CharacterBody2D" parent="."]
 script = ExtResource("2_ta5nu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(571, 384)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chat"]
+position = Vector2(556, 403.75)
 shape = SubResource("RectangleShape2D_kdubu")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="chat"]
 stream = ExtResource("6_kdubu")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-position = Vector2(572, 402)
-scale = Vector2(0.160612, 0.160612)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="chat"]
+position = Vector2(555.406, 418.594)
+scale = Vector2(0.136856, 0.136856)
 sprite_frames = SubResource("SpriteFrames_d21ai")
 animation = &"sit"
 speed_scale = 0.7
+
+[node name="Area2D" type="Area2D" parent="chat"]
+script = ExtResource("10_ei405")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chat/Area2D"]
+position = Vector2(559.25, 405.25)
+shape = SubResource("RectangleShape2D_e8dv2")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -119,7 +155,7 @@ scale = Vector2(2.62167, 1.00332)
 texture = ExtResource("11_d2bti")
 
 [node name="plateforme3" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(730.86, 507.331)
+position = Vector2(618, 507)
 scale = Vector2(1.88972, 1.00452)
 texture = ExtResource("9_ir8iy")
 
@@ -129,7 +165,7 @@ scale = Vector2(2.38552, 1.00906)
 texture = ExtResource("10_hqns4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(556.5, 509)
+position = Vector2(502.5, 509)
 scale = Vector2(0.994088, 0.972238)
 shape = SubResource("RectangleShape2D_rj586")
 
@@ -187,3 +223,25 @@ script = ExtResource("14_d2bti")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="lumiere/Area2D"]
 position = Vector2(368, 418)
 shape = SubResource("CircleShape2D_ta5nu")
+
+[node name="lumiere_02" type="Node2D" parent="."]
+position = Vector2(572, 340)
+scale = Vector2(0.312999, 0.327701)
+
+[node name="Sprite2D" type="Sprite2D" parent="lumiere_02"]
+position = Vector2(-548.688, 331.499)
+scale = Vector2(2.16694, 2.16694)
+texture = ExtResource("17_rjqkl")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="lumiere_02"]
+scale = Vector2(1, 1)
+stream = ExtResource("18_fs4d3")
+
+[node name="Area2D" type="Area2D" parent="lumiere_02"]
+position = Vector2(-548.688, 331.499)
+scale = Vector2(2.16694, 2.16694)
+script = ExtResource("19_7vxoj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lumiere_02/Area2D"]
+position = Vector2(-0.385154, 13.1916)
+shape = SubResource("CircleShape2D_ei405")
