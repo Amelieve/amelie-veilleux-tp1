@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed : float = 200
+@export var speed : float =200
 @export var jump_velocity : float = 400  
 
 var anim_sprite : AnimatedSprite2D
@@ -17,7 +17,7 @@ func _physics_process(delta: float) -> void:
 
 
 	if Input.is_action_pressed("move_right"):
-		input_direction.x += 13
+		input_direction.x += 1
 		anim_sprite.flip_h = true
 	elif Input.is_action_pressed("move_left"):
 		input_direction.x -= 1
@@ -44,8 +44,14 @@ func _physics_process(delta: float) -> void:
 		anim_sprite.play("attack")
 
 	
-	elif is_on_floor() and velocity.x == 0 and not anim_sprite.is_playing():
+	# Marche
+	elif is_on_floor() and velocity.x != 0:
+		anim_sprite.play("walk")
+
+	# Idle
+	elif is_on_floor() and velocity.x == 0:
 		anim_sprite.play("idle")
 
+	# Appliquer le mouvement
 	move_and_slide()
 	

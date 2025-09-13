@@ -15,4 +15,10 @@ func _input_event(viewport, event, shape_idx):
 			sound.play()
 		if terre:
 			terre.visible = not terre.visible  
-		print("🌍 Nature activée/désactivée")
+		print("🌍 Planète activée/désactivée")
+
+func _fusee() -> void:
+	var tween = create_tween()
+	# tourne sur elle-même (360° = 2*PI en radians)
+	tween.tween_property($Fusee, "rotation_degrees", 360.0, 5.0)
+	tween.set_loops()  # recommence sans fin
