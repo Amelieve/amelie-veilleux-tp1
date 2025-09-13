@@ -44,14 +44,12 @@ func _physics_process(delta: float) -> void:
 		anim_sprite.play("attack")
 
 	
-	# Marche
 	elif is_on_floor() and velocity.x != 0:
 		anim_sprite.play("walk")
 
-	# Idle
 	elif is_on_floor() and velocity.x == 0:
 		anim_sprite.play("idle")
 
-	# Appliquer le mouvement
+
 	move_and_slide()
 	
